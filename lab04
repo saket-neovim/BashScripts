@@ -1,0 +1,22 @@
+#!/bin/bash
+DIR=${1:?Enter Directory as an argument!}
+AGE=${2:-30}
+TIMESTAMP=$(date +%F-%H-%M-%S)
+
+## For testing mtime age is "-"
+
+find "$DIR" -type f -mtime -"$AGE" -name "*.log" > tempfile.txt
+cat tempfile.txt
+
+echo enter confirmation: "[y/n]"
+read CONFIRMATION
+	
+if [ "$CONFIRMATION" = "y" ]
+then
+	tar -czf "old-logs-$TIMESTAMP.tar.gz" -T tempfile.txt && cat tempfile.txt | xargs rm 
+	rm -f tempfile.txt
+elif [ "$CONFIRMATION" = "n" ]
+then
+	echo Exited!
+	exit 1
+fi

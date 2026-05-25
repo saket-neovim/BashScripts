@@ -1,0 +1,11 @@
+#!/bin/bash
+
+## Vars
+DIR=$1
+
+${1:?Directory argument required!}
+
+SIZE=${2:-100M}
+
+find "$DIR" -type f -size +"$SIZE" -exec du -h {} \; 2>/dev/null | sort -rh
+

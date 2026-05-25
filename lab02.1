@@ -1,0 +1,7 @@
+#!/bin/bash
+
+## Disk Usage Warning Report
+
+THRESHOLD=${1:-80}
+df -h | tr -d '%' | tail -n +2 | awk -v THRESHOLD="$THRESHOLD" '$5 > THRESHOLD {print $1}' 
+

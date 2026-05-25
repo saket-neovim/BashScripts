@@ -1,0 +1,17 @@
+#!/bin/bash
+
+## print the following host, user, kernel, shell, current dir and current date
+
+## Vars
+HOST=$(hostname)
+USER=$(whoami)
+KERNEL=$(uname -r)
+CURRENT_DIR=$(pwd)
+CURRENT_DATE=$(date +%F)
+
+## Printing them
+echo HOST=$HOST
+echo USER=$USER
+echo KERNEL=$KERNEL
+echo CURRENT_DIR=$CURRENT_DIR
+echo CURRENT_DATE=$CURRENT_DATE

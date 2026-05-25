@@ -1,0 +1,25 @@
+#!/bin/bash
+
+## Disk Usage Warning Report
+
+if [ -z $1 ]
+then	
+	THRESHOLD=80
+	echo THRESHOLD is set to default $THRESHOLD %
+else
+	THRESHOLD=$1
+	echo THRESHOLD is set to $THRESHOLD %
+fi
+
+COUNT=0
+COUNT=$(df -h | tr -d '%' | tail -n +2 | awk -v THRESHOLD=$THRESHOLD '$5 > THRESHOLD { COUNT++ } END { print COUNT }')
+df -h | tr -d '%' | tail -n +2 | awk -v THRESHOLD=$THRESHOLD '$5 > THRESHOLD {print $1}'
+echo
+echo the number of filesystems exceeding $THRESHOLD% is $COUNT
+
+
+
+
+
+
+
