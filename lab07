@@ -1,0 +1,18 @@
+#!/bin/bash
+
+if [ -z $1 ]
+then
+	echo Enter service names as arguments
+	exit 1
+fi
+
+if [ ! -d /etc/systemd/system ]
+then
+	echo systemd is unavailable
+	exit 1
+fi
+
+for service_name in $@
+do
+	echo $service_name is $(systemctl is-active $service_name) 
+done
