@@ -1,0 +1,19 @@
+#!/bin/bash
+
+LOG=${1:?Enter log file}
+
+if [ ! -f "$LOG" ]
+then
+	echo File does not exist : "$LOG"
+	exit 1
+fi
+
+echo Recent Failures are:
+
+OUTPUT=$( grep -i "failed" "$LOG" | tail -n 2 )
+
+echo "$OUTPUT"
+echo The Failure count is $(echo  "$OUTPUT" | wc -l)
+
+
+
