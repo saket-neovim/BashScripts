@@ -1,0 +1,23 @@
+#!/bin/bash
+
+#if [ ! -z $1 ]
+#then
+#	PORT=$1
+#else
+#	PORT="*"
+#fi
+
+
+if ! command -v ss &> /dev/null
+then
+	echo ss command is not present
+	exit 1
+fi
+
+echo STATE		LOCAL ADDRESS : PORT
+if [ ! -z $1 ]
+then
+	ss -tulnpH sport = "$1"  | awk '/LISTEN/ { print $2, $5}'
+else
+	ss -tulnpH | awk '/LISTEN/ { print $2, $5}'
+fi
