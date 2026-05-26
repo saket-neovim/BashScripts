@@ -1,0 +1,6 @@
+#!/bin/bash
+
+cat /etc/passwd | awk -F: '$3 >= 1000 { print "USERNAME= " $1, "UID= " $3, "HOME_DIR= " $6, "SHELL= " $7 } ' > user-audit.txt 2> /dev/null
+cat user-audit.txt
+
+rm user-audit.txt
