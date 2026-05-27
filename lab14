@@ -1,0 +1,22 @@
+#!/bin/bash
+
+echo Enter First name
+read FIRST
+
+echo Enter Last name
+read LAST
+
+FLAG="TRUE"
+
+while [ "$FLAG" = "TRUE" ]
+do
+	echo Enter username
+	read USERNAME123
+	
+	if [ -n "$USERNAME123" ]
+	then
+		FLAG="FALSE"	
+	fi
+done
+
+echo $FIRST $LAST $USERNAME123
