@@ -1,0 +1,34 @@
+#!/bin/bash
+
+FILEPATH=${1:?Enter file to be changed}
+KEY=${2:?Enter key to be replaced}
+VALUE=${3:?Enter value to be replaced}
+
+if [ ! -f "$FILEPATH" ]
+then
+	echo File does not exist
+	exit 1
+fi
+
+if ! grep -q "$KEY" "$FILEPATH"
+then
+	echo value does not exist
+	exit 1
+fi
+
+sed -n "s|$KEY|$VALUE|p" "$FILEPATH"
+
+echo Enter confirmation to perform the above change: "[y/n]":
+read CONFIRM
+
+if [ "$CONFIRM" == "Y" ] || [ "$CONFIRM" == 'y' ]
+then 
+	sed -i.bak "s|$KEY|$VALUE|g" "$FILEPATH"
+	echo CHANGES MADE TO FILE : "$FILEPATH"
+	grep "$VALUE" "$FILEPATH"
+else
+	echo CHANGE NOT MADE!
+	exit 1
+fi
+
+
