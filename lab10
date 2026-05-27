@@ -1,0 +1,12 @@
+#!/bin/bash
+
+FILEPATH=${1:?File Path needed}
+
+TARGET="back-$(date +%F-%H-%M-%S)-${FILEPATH##*/}"
+
+cp "$FILEPATH" "$TARGET"
+
+du -h "$TARGET"
+
+
+
