@@ -6,16 +6,14 @@ read FIRST
 echo Enter Last name
 read LAST
 
-FLAG="TRUE"
-
-while [ "$FLAG" = "TRUE" ]
+while true
 do
 	echo Enter username
 	read USERNAME123
 	
 	if [ -n "$USERNAME123" ]
 	then
-		FLAG="FALSE"	
+		break
 	fi
 done
 
