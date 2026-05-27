@@ -1,0 +1,12 @@
+#!/bin/bash
+
+FILEPATH=${1:?Enter config file}
+
+if [ ! -f $FILEPATH ]
+then
+	echo $FILEPATH does not exist
+	exit 1
+fi
+
+grep -v "^[[:space:]]*#" "$FILEPATH" | grep -v "^[[:space:]]*$" | grep -nv "^#*$"
+
