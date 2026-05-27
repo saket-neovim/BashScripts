@@ -1,0 +1,13 @@
+#!/bin/bash
+
+ENV_NAME=${1:?Enter env name}
+
+RESULT=$( awk -F',' -v Env="$ENV_NAME" 'NR > 1 && $2 == Env {print $2, $3, $4}' inventory.csv )
+
+if [ -z "$RESULT" ]
+then
+	echo "$ENV_NAME" does not exist.
+	exit 1
+fi
+
+echo "$RESULT"
