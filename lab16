@@ -1,0 +1,7 @@
+#!/bin/bash
+
+source prod.env
+
+echo application name : "$APP_NAME"
+echo log directory : "$LOG_DIR"
+echo backup directory : "$BACKUP_DIR"
