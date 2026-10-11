@@ -1,7 +1,7 @@
 hostname,environment,role,ip
-web01,production,web,10.0.1.10
-web02,production,web,10.0.1.11
-db01,production,database,10.0.2.10
-app01,staging,application,10.0.3.10
-app02,staging,application,10.0.3.11
-dev01,development,developer,10.0.4.10
+web01,production,web,192.0.2.20
+web02,production,web,192.0.2.21
+db01,production,database,192.0.2.20
+app01,staging,application,192.0.2.20
+app02,staging,application,192.0.2.21
+dev01,development,developer,192.0.2.20
